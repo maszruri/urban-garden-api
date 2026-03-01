@@ -1,6 +1,7 @@
 package com.masruri.urban_garden_api.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "tanaman")
@@ -9,12 +10,16 @@ public class Tanaman {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "Nama tanaman wajib diisi!")
     @Column(name = "nama_tanaman")
     private String namaTanaman;
 
+    @NotBlank(message = "Jenis wadah tidak boleh kosong!")
     @Column(name = "jenis_wadah")
     private String jenisWadah;
 
+    @Min(value = 0, message = "Estimasi hari panen tidak boleh minus!")
+    @NotNull(message = "Estimasi panen wajib diisi!")
     @Column(name = "estimasi_panen_hari")
     private Integer estimasiPanenHari;
 

@@ -3,6 +3,7 @@ package com.masruri.urban_garden_api.controller;
 import com.masruri.urban_garden_api.entity.Tanaman;
 import com.masruri.urban_garden_api.repository.TanamanRepository;
 import com.masruri.urban_garden_api.service.TanamanService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +27,12 @@ public class TanamanController {
     }
 
     @PostMapping
-    public Tanaman tambahTanaman(@RequestBody Tanaman tanaman) {
+    public Tanaman tambahTanaman(@Valid @RequestBody Tanaman tanaman) {
         return tanamanService.tambah(tanaman);
     }
 
     @PutMapping("/{id}")
-    public Tanaman ubahTanaman(@PathVariable Integer id, @RequestBody Tanaman tanamanBaru) {
+    public Tanaman ubahTanaman(@PathVariable Integer id,@Valid @RequestBody Tanaman tanamanBaru) {
         return tanamanService.ubah(id,tanamanBaru);
     }
 
