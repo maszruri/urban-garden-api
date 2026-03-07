@@ -40,4 +40,12 @@ public class TanamanService {
     public void hapus(Integer id){
         tanamanRepository.deleteById(id);
     }
+
+    public List<Tanaman> cariBerdasarkanWadah(String wadah){
+        return  tanamanRepository.findByJenisWadah(wadah);
+    }
+
+    public List<Tanaman> cariTanamanYangHidup(){
+        return tanamanRepository.findByHidupTrue();
+    }
 }

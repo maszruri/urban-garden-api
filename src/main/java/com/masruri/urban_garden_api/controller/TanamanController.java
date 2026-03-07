@@ -1,7 +1,6 @@
 package com.masruri.urban_garden_api.controller;
 
 import com.masruri.urban_garden_api.entity.Tanaman;
-import com.masruri.urban_garden_api.repository.TanamanRepository;
 import com.masruri.urban_garden_api.service.TanamanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +39,16 @@ public class TanamanController {
     public String hapusTanaman(@PathVariable Integer id) {
         tanamanService.hapus(id);
         return "Tanaman berhasil dihapus!";
+    }
+
+    @GetMapping("/wadah/{wadah}")
+    public List<Tanaman> ambilBerdasarkanWadah(@PathVariable String wadah){
+        return tanamanService.cariBerdasarkanWadah(wadah);
+    }
+
+    @GetMapping("/hidup")
+    public List<Tanaman> ambilTanamanHidup(){
+        return tanamanService.cariTanamanYangHidup();
     }
 
 }
